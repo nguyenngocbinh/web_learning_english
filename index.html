@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌈 FunEnglish Kids – Learn English the Fun Way!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== FLOATING BACKGROUND SHAPES ===== -->
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape shape-circle shape-1"></div>
+    <div class="shape shape-circle shape-2"></div>
+    <div class="shape shape-star shape-3">★</div>
+    <div class="shape shape-triangle shape-4"></div>
+    <div class="shape shape-circle shape-5"></div>
+    <div class="shape shape-star shape-6">✦</div>
+    <div class="shape shape-square shape-7"></div>
+    <div class="shape shape-circle shape-8"></div>
+    <div class="shape shape-star shape-9">❋</div>
+    <div class="shape shape-square shape-10"></div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-emoji">🦁</span>
+      <span class="logo-text">FunEnglish<span class="logo-kids"> Kids</span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hero" class="nav-link active" data-section="hero">🏠 Home</a></li>
+      <li><a href="#alphabet" class="nav-link" data-section="alphabet">🔤 Alphabet</a></li>
+      <li><a href="#vocabulary" class="nav-link" data-section="vocabulary">📚 Words</a></li>
+      <li><a href="#games" class="nav-link" data-section="games">🎮 Games</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation" id="navToggle">☰</button>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ For Kids Ages 4–10</div>
+      <h1 class="hero-title">
+        Learn English<br />
+        <span class="hero-title-accent">the Fun Way!</span>
+      </h1>
+      <p class="hero-subtitle">
+        Play games, learn words, and explore the alphabet with colorful animations!
+      </p>
+      <div class="hero-buttons">
+        <a href="#alphabet" class="btn btn-primary">🔤 Start Learning</a>
+        <a href="#games" class="btn btn-secondary">🎮 Play Games</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">26</span>
+          <span class="stat-label">Letters</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">60+</span>
+          <span class="stat-label">Words</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Games</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="illustration-circle">
+        <div class="illustration-inner">
+          <span class="illus-emoji illus-1">🦊</span>
+          <span class="illus-emoji illus-2">🐸</span>
+          <span class="illus-emoji illus-3">🦋</span>
+          <span class="illus-emoji illus-4">🐬</span>
+          <span class="illus-emoji illus-5">🐧</span>
+          <span class="illus-emoji illus-6">🦒</span>
+          <div class="illus-center">🌟</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ALPHABET SECTION ===== -->
+  <section class="section" id="alphabet">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🔤 ABC Time</div>
+        <h2 class="section-title">Learn the <span class="accent">Alphabet</span></h2>
+        <p class="section-desc">Click any letter to hear its name and see an example word!</p>
+      </div>
+      <div class="alphabet-grid" id="alphabetGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== VOCABULARY SECTION ===== -->
+  <section class="section section-alt" id="vocabulary">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">📚 Words</div>
+        <h2 class="section-title">Learn <span class="accent">Vocabulary</span></h2>
+        <p class="section-desc">Choose a category and learn new words with pictures!</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="category-tabs" id="categoryTabs">
+        <button class="cat-tab active" data-cat="animals">🐾 Animals</button>
+        <button class="cat-tab" data-cat="colors">🎨 Colors</button>
+        <button class="cat-tab" data-cat="numbers">🔢 Numbers</button>
+        <button class="cat-tab" data-cat="fruits">🍎 Fruits</button>
+        <button class="cat-tab" data-cat="body">👤 Body</button>
+      </div>
+
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== GAMES SECTION ===== -->
+  <section class="section" id="games">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🎮 Play &amp; Learn</div>
+        <h2 class="section-title">Fun <span class="accent">Games</span></h2>
+        <p class="section-desc">Learn while playing! Choose a game to get started.</p>
+      </div>
+
+      <!-- Game selector -->
+      <div class="game-selector">
+        <button class="game-tab active" data-game="memory">🃏 Memory Match</button>
+        <button class="game-tab" data-game="quiz">❓ Word Quiz</button>
+      </div>
+
+      <!-- Memory Match Game -->
+      <div class="game-panel active" id="game-memory">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">⏱ Time: <strong id="memTimer">0</strong>s</span>
+            <span class="info-badge">🔄 Moves: <strong id="memMoves">0</strong></span>
+            <span class="info-badge">✅ Pairs: <strong id="memPairs">0</strong>/8</span>
+          </div>
+          <div class="game-controls">
+            <select id="memDifficulty" class="game-select">
+              <option value="easy">Easy (8 pairs)</option>
+              <option value="medium">Medium (12 pairs)</option>
+            </select>
+            <button class="btn btn-small btn-primary" id="memStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="memory-board" id="memoryBoard"></div>
+        <div class="game-result hidden" id="memResult">
+          <div class="result-card">
+            <div class="result-emoji">🎉</div>
+            <h3 class="result-title">You Won!</h3>
+            <p class="result-stats">Time: <strong id="rTime">0</strong>s &nbsp;|&nbsp; Moves: <strong id="rMoves">0</strong></p>
+            <button class="btn btn-primary" id="memPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Quiz Game -->
+      <div class="game-panel" id="game-quiz">
+        <div class="quiz-container" id="quizContainer">
+          <div class="quiz-header">
+            <span class="info-badge">Question <strong id="qNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="qScore">0</strong></span>
+          </div>
+          <div class="quiz-progress">
+            <div class="quiz-progress-bar" id="qProgress"></div>
+          </div>
+          <div class="quiz-question">
+            <div class="quiz-emoji" id="qEmoji">🐱</div>
+            <p class="quiz-text" id="qText">What animal is this?</p>
+          </div>
+          <div class="quiz-options" id="qOptions"></div>
+        </div>
+        <div class="game-result hidden" id="quizResult">
+          <div class="result-card">
+            <div class="result-emoji" id="qResultEmoji">🏆</div>
+            <h3 class="result-title" id="qResultTitle">Great job!</h3>
+            <p class="result-stats">You scored <strong id="qFinalScore">0</strong> out of 10</p>
+            <button class="btn btn-primary" id="quizPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-emoji">🦁</span>
+          <span class="logo-text">FunEnglish<span class="logo-kids"> Kids</span></span>
+        </div>
+        <p class="footer-tagline">Making English learning joyful for every child! 🌈</p>
+        <div class="footer-shapes" aria-hidden="true">
+          <span>🌟</span><span>🎈</span><span>🦋</span><span>🌸</span><span>🎉</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/alphabet.js"></script>
+  <script src="js/vocabulary.js"></script>
+  <script src="js/memory.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
