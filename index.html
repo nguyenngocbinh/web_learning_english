@@ -65,7 +65,7 @@
           <span class="stat-label">Words</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">5</span>
+          <span class="stat-number">11</span>
           <span class="stat-label">Games</span>
         </div>
       </div>
@@ -150,6 +150,12 @@
         <button class="game-tab" data-game="spelling">🔤 Spelling Bee</button>
         <button class="game-tab" data-game="scramble">🔀 Word Scramble</button>
         <button class="game-tab" data-game="listening">👂 Listening</button>
+        <button class="game-tab" data-game="hangman">☠️ Hangman</button>
+        <button class="game-tab" data-game="flashcards">🗂️ Flashcards</button>
+        <button class="game-tab" data-game="wordsearch">🔍 Word Search</button>
+        <button class="game-tab" data-game="dictation">✍️ Dictation</button>
+        <button class="game-tab" data-game="sentence">📝 Sentence Builder</button>
+        <button class="game-tab" data-game="bingo">🎯 Word Bingo</button>
       </div>
 
       <!-- Memory Match Game -->
@@ -295,6 +301,203 @@
         </div>
       </div>
 
+      <!-- Hangman Game -->
+      <div class="game-panel" id="game-hangman">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">☠️ Word <strong id="hangNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="hangScore">0</strong></span>
+            <span class="info-badge">❤️ Lives: <strong id="hangLives">10</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="hangStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="hangman-container" id="hangmanContainer">
+          <div class="hangman-emoji" id="hangEmoji">🐱</div>
+          <canvas id="hangmanCanvas" width="200" height="200"></canvas>
+          <div class="hangman-word" id="hangWord"></div>
+          <p class="hangman-hint" id="hangHint"></p>
+          <div class="hangman-keyboard" id="hangKeyboard"></div>
+          <div class="hangman-actions">
+            <button class="btn btn-small btn-secondary" id="hangHintBtn">💡 Show Hint</button>
+          </div>
+          <div class="hangman-feedback" id="hangFeedback"></div>
+        </div>
+        <div class="game-result hidden" id="hangResult">
+          <div class="result-card">
+            <div class="result-emoji" id="hangResultEmoji">🏆</div>
+            <h3 class="result-title" id="hangResultTitle">Great job!</h3>
+            <p class="result-stats">You guessed <strong id="hangFinalScore">0</strong> out of 10</p>
+            <button class="btn btn-primary" id="hangPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flashcards Game -->
+      <div class="game-panel" id="game-flashcards">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">🗂️ Card <strong id="flashNum">1</strong>/<strong id="flashTotal">12</strong></span>
+            <span class="info-badge">✅ Known: <strong id="flashKnown">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <select id="flashCatSelect" class="game-select"></select>
+            <button class="btn btn-small btn-primary" id="flashStart">▶ New Deck</button>
+          </div>
+        </div>
+        <div class="flashcards-container" id="flashcardsContainer">
+          <div class="flash-progress-bar"><div class="flash-progress" id="flashProgress"></div></div>
+          <div class="flash-card" id="flashCard">
+            <div class="flash-front">
+              <span class="flash-emoji" id="flashEmoji">🐱</span>
+              <p class="flash-tap">Tap to reveal</p>
+            </div>
+            <div class="flash-back">
+              <span class="flash-word" id="flashWord">Cat</span>
+              <span class="flash-phonetic" id="flashPhonetic">/kæt/</span>
+              <button class="btn btn-small btn-secondary" id="flashListen">🔊 Listen</button>
+            </div>
+          </div>
+          <div class="flash-actions">
+            <button class="btn btn-small flash-btn-dont hidden" id="flashDontKnowBtn">🔄 Review Again</button>
+            <button class="btn btn-small flash-btn-know hidden" id="flashKnowBtn">✅ I Know It!</button>
+          </div>
+        </div>
+        <div class="game-result hidden" id="flashResult">
+          <div class="result-card">
+            <div class="result-emoji" id="flashResultEmoji">🏆</div>
+            <h3 class="result-title" id="flashResultTitle">Well done!</h3>
+            <p class="result-stats">You knew <strong id="flashFinalScore">0</strong>/<strong id="flashFinalTotal">12</strong> words</p>
+            <button class="btn btn-primary" id="flashPlayAgain">🔄 New Deck</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Search Game -->
+      <div class="game-panel" id="game-wordsearch">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">⏱ Time: <strong id="wsTimer">0</strong>s</span>
+            <span class="info-badge">🔍 Found: <strong id="wsFound">0</strong>/<strong id="wsTotal">6</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="wsStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="wordsearch-container" id="wordsearchContainer">
+          <div class="ws-layout">
+            <div class="ws-grid" id="wsGrid"></div>
+            <ul class="ws-word-list" id="wsWordList"></ul>
+          </div>
+        </div>
+        <div class="game-result hidden" id="wsResult">
+          <div class="result-card">
+            <div class="result-emoji" id="wsResultEmoji">🏆</div>
+            <h3 class="result-title" id="wsResultTitle">All found!</h3>
+            <p class="result-stats">Found <strong id="wsFinalFound">0</strong> words in <strong id="wsFinalTime">0</strong>s</p>
+            <button class="btn btn-primary" id="wsPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dictation Game -->
+      <div class="game-panel" id="game-dictation">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">✍️ Word <strong id="dictNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="dictScore">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="dictStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="dictation-container" id="dictationContainer">
+          <p class="dict-prompt">Listen carefully and type the word you hear!</p>
+          <button class="btn btn-primary listening-play-btn" id="dictPlayBtn">🔊 Play Word</button>
+          <div class="dict-input-wrap">
+            <input type="text" class="dict-input" id="dictInput" placeholder="Type the word here..." autocomplete="off" autocapitalize="off" />
+            <button class="btn btn-small btn-primary" id="dictSubmit">✅ Check</button>
+          </div>
+          <div class="dict-actions">
+            <button class="btn btn-small btn-secondary" id="dictHintBtn">💡 Hint</button>
+          </div>
+          <p class="dict-hint" id="dictHint"></p>
+          <div class="dictation-feedback" id="dictFeedback"></div>
+          <p class="dict-example" id="dictExample"></p>
+        </div>
+        <div class="game-result hidden" id="dictResult">
+          <div class="result-card">
+            <div class="result-emoji" id="dictResultEmoji">🏆</div>
+            <h3 class="result-title" id="dictResultTitle">Great listener!</h3>
+            <p class="result-stats">You typed <strong id="dictFinalScore">0</strong> out of 10 correctly</p>
+            <button class="btn btn-primary" id="dictPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentence Builder Game -->
+      <div class="game-panel" id="game-sentence">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">📝 Sentence <strong id="sentNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="sentScore">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="sentStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="sentence-container" id="sentenceContainer">
+          <div class="sentence-emoji" id="sentEmoji">🐱</div>
+          <p class="sentence-prompt">Arrange the words to make a sentence!</p>
+          <div class="sentence-slots" id="sentSlots"></div>
+          <div class="sentence-words" id="sentWords"></div>
+          <div class="sentence-actions">
+            <button class="btn btn-small btn-secondary" id="sentClear">🗑️ Clear All</button>
+          </div>
+          <div class="sentence-feedback" id="sentFeedback"></div>
+        </div>
+        <div class="game-result hidden" id="sentResult">
+          <div class="result-card">
+            <div class="result-emoji" id="sentResultEmoji">🏆</div>
+            <h3 class="result-title" id="sentResultTitle">Sentence master!</h3>
+            <p class="result-stats">You built <strong id="sentFinalScore">0</strong> out of 10 sentences</p>
+            <button class="btn btn-primary" id="sentPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Bingo Game -->
+      <div class="game-panel" id="game-bingo">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">🎯 Calls: <strong id="bingoNum">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <select id="bingoSize" class="game-select">
+              <option value="3">3×3 Board</option>
+              <option value="4">4×4 Board</option>
+            </select>
+            <button class="btn btn-small btn-secondary" id="bingoCallBtn">📢 Call Word</button>
+            <button class="btn btn-small btn-primary" id="bingoStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="bingo-container" id="bingoContainer">
+          <div class="bingo-called" id="bingoCalled">
+            <span class="bingo-instruction">Press "Call Word" to start!</span>
+          </div>
+          <div class="bingo-board" id="bingoBoard"></div>
+        </div>
+        <div class="game-result hidden" id="bingoResult">
+          <div class="result-card">
+            <div class="result-emoji" id="bingoResultEmoji">🎉</div>
+            <h3 class="result-title" id="bingoResultTitle">BINGO!</h3>
+            <p class="result-stats" id="bingoResultStats">You got Bingo!</p>
+            <button class="btn btn-primary" id="bingoPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -322,6 +525,12 @@
   <script src="js/spelling.js"></script>
   <script src="js/scramble.js"></script>
   <script src="js/listening.js"></script>
+  <script src="js/hangman.js"></script>
+  <script src="js/flashcards.js"></script>
+  <script src="js/wordsearch.js"></script>
+  <script src="js/dictation.js"></script>
+  <script src="js/sentence.js"></script>
+  <script src="js/bingo.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
